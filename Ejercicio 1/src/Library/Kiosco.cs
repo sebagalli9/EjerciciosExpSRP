@@ -1,36 +1,19 @@
 using System;
+using System.Collections.Generic;
 
 namespace Expert_SRP
 {
     public class Kiosco 
     {
 
-         /*La clase Kiosco rompe el principio SRP ya que existe más de una razon de cambio, las cuales son:
-        Por un lado verificar que haya suficiente dinero para comprar un alfajor
-        Y por otro lado, hacer la conversión de la moneda.
-        */ 
-        public Boolean PuedeComprar(Alfajor a, Double dinero, String moneda) //El parametro a no es suficientemente descriptivo
-        {
-            Double pesos = ConvertirAPesos(dinero, moneda);
-            return pesos >= a.PrecioDulce + a.PrecioMasa;
-        }
-        private Double ConvertirAPesos(Double dinero, String moneda)
-        {
-            if (moneda.Equals("U$S")) 
-            {
-                return dinero / 30;
-            } 
-            else if (moneda.Equals("$")) 
-            {
-                return dinero;
-            }
-            else 
-            {
-                return -1;
-            }
-        }
+        /* - Para cumplir con el principio SRP, se le quitó a la clase Kiosco
+             la responsabilidad de convertir distintos tipos de monedas, déjandole cómo única razón de cambio 
+             verificar que el dinero sea suficiente para comprar uno o varios alfajores.*/ 
 
-       
-
+        public Boolean PuedeComprar(Alfajor alfajor, Double dinero, String moneda)
+        {
+            Double pesos = Dinero.ConvertirAPesos(dinero, moneda);
+            return pesos >= alfajor.PrecioDulce + alfajor.PrecioMasa;
+        }
     }
 }

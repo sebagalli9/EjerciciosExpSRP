@@ -1,13 +1,11 @@
 using System;
+using System.Collections.Generic;
 
 namespace Expert_SRP
 {
-
-     /*
-    La clase Alfajor cumple con el patron Expert, ya que es la clase que tiene la información 
-    del precio de cada uno de los ingredientes. Esta información la necesita la clase Kiosco
-    para calcular el precio total.
-    */
+    /* - La clase Alfajor cumple con el patron Expert, ya que es la clase que tiene la información 
+        del precio de cada uno de los ingredientes. Esta información la necesita la clase Kiosco
+        para calcular el precio total.*/
     
     public class Alfajor 
     {
@@ -19,7 +17,4 @@ namespace Expert_SRP
         public Double PrecioDulce {get;set;}
         public Double PrecioMasa {get; set;}
     }
-
-   
-
 }

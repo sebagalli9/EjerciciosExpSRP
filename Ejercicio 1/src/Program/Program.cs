@@ -6,9 +6,12 @@ namespace Expert_SRP
     {
         static void Main(string[] args)
         {
-            Alfajor a = new Alfajor(10, 8.5);
-            Kiosco k = new Kiosco();
-            if (k.PuedeComprar(a, 15, "$"))
+            /* Los nombres de las instancias de la clase alfajor y
+             kiosco se modificaron para que sean más descriptivas*/
+
+            Alfajor alfajor = new Alfajor(10, 8.5);
+            Kiosco kiosco = new Kiosco();
+            if (kiosco.PuedeComprar(alfajor, 20, "$"))
             {
                 Console.WriteLine("Felicitaciones! Tiene suficiente dinero para comprar un alfajor :)");
             }
