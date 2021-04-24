@@ -4,7 +4,11 @@ using System.Text;
 namespace Library
 {
     public class AppointmentService
-    {
+    
+    {   /* Actualmente el código no viola el principio SRP, ya que la única razón de cambio sería cambiar los 
+        criterios de validación de datos.
+        Sin embargo, teniendo en cuenta lo que se pide modificar en las cuatro partes siguientes, se deberán agregar más
+        responsabilidades, y tambien habrán más razones de cambio */
         public static string CreateAppointment(string name, string id, string phoneNumber, DateTime date, string appoinmentPlace, string doctorName)
         {
             StringBuilder stringBuilder = new StringBuilder("Scheduling appointment...\n");
