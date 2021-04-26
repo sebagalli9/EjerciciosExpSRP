@@ -3,54 +3,63 @@ using System.Text;
 
 namespace Library
 {
+    /* Se crearon las clases Patient, Doctor y ScheduleAppointment para cumplir con el principio SRP 
+    dejándole a la clase AppointmentService la única responsabilidad de validar los datos del paciente 
+    y del doctor */
+
     public class AppointmentService
     
-    {   /* Actualmente el código no viola el principio SRP, ya que la única razón de cambio sería cambiar los 
-        criterios de validación de datos.
-        Sin embargo, teniendo en cuenta lo que se pide modificar en las cuatro partes siguientes, se deberán agregar más
-        responsabilidades, y tambien habrán más razones de cambio */
-        public static string CreateAppointment(string name, string id, string phoneNumber, DateTime date, string appoinmentPlace, string doctorName)
+    {
+        public static bool ValidateAppointment(Patient patient, Doctor doctor)
         {
-            StringBuilder stringBuilder = new StringBuilder("Scheduling appointment...\n");
             Boolean isValid = true;
 
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(patient.Name))
             {
-                stringBuilder.Append("Unable to schedule appointment, Name is required\n");
+                Console.WriteLine("Unable to schedule appointment, Name is required\n");
                 isValid = false;
             }
 
-            if (string.IsNullOrEmpty(id))
+            if (string.IsNullOrEmpty(patient.Id))
             {
-                stringBuilder.Append("Unable to schedule appointment, id is required\n");
+                Console.WriteLine("Unable to schedule appointment, id is required\n");
                 isValid = false;
             }
 
-            if (string.IsNullOrEmpty(phoneNumber))
+            if (string.IsNullOrEmpty(patient.PhoneNumber))
             {
-                stringBuilder.Append("Unable to schedule appointment, Phone number is required\n");
+                Console.WriteLine("Unable to schedule appointment, Phone number is required\n");
                 isValid = false;
             }
 
-            if (string.IsNullOrEmpty(appoinmentPlace))
+            if (string.IsNullOrEmpty(doctor.AppointmentPlace))
             {
-                stringBuilder.Append("Unable to schedule appointment, Appoinment place is required\n");
+                Console.WriteLine("Unable to schedule appointment, Appoinment place is required\n");
                 isValid = false;
             }
 
             
-            if (string.IsNullOrEmpty(doctorName))
+            if (string.IsNullOrEmpty(doctor.Name))
             {
-                stringBuilder.Append("Unable to schedule appointment, Doctor name is required\n");
+                Console.WriteLine("Unable to schedule appointment, Doctor name is required\n");
                 isValid = false;
             }
 
-            if (isValid)
+            if (string.IsNullOrEmpty(doctor.Field))
             {
-                stringBuilder.Append("Appoinment Scheduled");
+                Console.WriteLine("Unable to schedule appointment, Doctor field is required\n");
+                isValid = false;
             }
 
-            return stringBuilder.ToString();
+            if (string.IsNullOrEmpty(patient.Age))
+            {
+                Console.WriteLine("Unable to schedule appointment, Patient age is required\n");
+                isValid = false;
+            }
+
+
+
+            return isValid;
         }
 
     }
